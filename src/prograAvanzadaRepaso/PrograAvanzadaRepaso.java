@@ -74,34 +74,5 @@ public class PrograAvanzadaRepaso {
 		//System.out.println(menorCostoPD(matriz1));
 		
 	}
-	
-	public static int menorCostoPD(int matriz[][]) {
-		int maux[][] = new int[matriz.length][matriz[0].length];
-		
-		maux[0][0] = matriz[0][0];
-		
-		for(int i=1; i<matriz.length; i++) {
-			maux[i][0] = maux[i-1][0] + matriz[i][0];
-		}
-		
-		for(int j=1; j<matriz.length; j++) {
-			maux[0][j] = maux[0][j-1] + matriz[0][j];
-		}
-		
-		for(int i=1; i<matriz.length; i++) {
-			for(int j=1; j<matriz[0].length; j++) {
-				maux[i][j] = minimo(maux[i-1][j-1], maux[i-1][j], maux[i][j-1]) + matriz[i][j];
-			}
-		}
-		
-		return maux[matriz.length-1][matriz[0].length-1];
-	}
-	
-	public static int minimo(int aux1, int aux2, int aux3) {
-		if(aux1 > aux2) {
-			return aux2 > aux3 ? aux3 : aux2; 
-		}
-		return aux1 > aux3 ? aux3 : aux1;
-	}
 
 }

@@ -55,8 +55,5 @@ public class Floyd {
         }
     }
 	
-	private static int minimo(int aux1, int aux2) {
-		return aux1 > aux2 ? aux2 : aux1;
-	}
 	
 }
