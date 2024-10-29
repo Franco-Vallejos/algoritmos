@@ -12,8 +12,8 @@ public class Kruskal {
 		numeroAristas = numeroNodos*numeroNodos;
 	}
 	
-	public int[] calcularKruskal() throws Exception {
-		int []predecesor = new int[numeroNodos];
+	public MST calcularKruskal() throws Exception {
+		MST mst = new MST(numeroNodos);
 		UnionFind uf = new UnionFind(numeroNodos);
 		ColaPrioridad<Vertice> pq = new ColaPrioridad<Vertice>(numeroAristas);
 		
@@ -30,41 +30,10 @@ public class Kruskal {
 			Vertice ver = pq.poll();
 			if(!uf.find(ver.nodoPartida, ver.nodoDestino)) {
 				uf.union(ver.nodoPartida, ver.nodoDestino);
-				predecesor[ver.nodoDestino] = ver.nodoPartida;
+				mst.addVertice(ver);
 				k++;
 			}
 		}
-		return predecesor;		
+		return mst;		
 	}
-	
-	
-	
-	public int[][] getMST() {
-		return matrizAdyacencia;
-	}
-
-    public void showGraph(int predecesor[]) {
-        System.out.println("KRUSKAL");
-        System.out.println("Arista \tPeso");
-        for (int i = 1; i < matrizAdyacencia.length; i++) {
-            System.out.println(predecesor[i] + " - " + i + "\t" + matrizAdyacencia[i][predecesor[i]]);
-        }
-    }
-    
-    public int getCosto(int predecesor[]) {
-    	int costo=0;
-    	for(int i=0; i<predecesor.length; i++) {
-    		costo+=predecesor[i];
-    	}
-    	return costo;
-    }
-    
-    public void showMatriz() {
-        for (int i = 0; i < matrizAdyacencia.length; i++) {
-            for (int j = 0; j < matrizAdyacencia.length; j++) {
-            	System.out.print(matrizAdyacencia[i][j]);
-            }
-            System.out.println();
-        }
-    }
 }

@@ -57,22 +57,20 @@ public class PrograAvanzadaRepaso {
 		Kruskal grafoKruskal = new Kruskal(matriz5);
 		
 		try {
-			int camino1[] = grafoPrimMST.calcularPrim(0);
-			grafoPrimMST.showGraph(camino1);
+			MST mstPrim = grafoPrimMST.calcularPrim(0);
+			System.out.println("PRIM");
+			mstPrim.showMST();
 			
-			int camino2[] =  grafoKruskal.calcularKruskal();
-			grafoKruskal.showGraph(camino2);
+			MST mstKruskal =  grafoKruskal.calcularKruskal();
+			System.out.println("KRUSKAL");
+			mstKruskal.showMST();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		grafoFloyd.imprimirMatriz();
-		grafoWarshall.imprimirMatriz();
-		
-		//System.out.println(menorCostoPD(matriz1));
-		
+		grafoWarshall.imprimirMatriz();		
 	}
 
 }
