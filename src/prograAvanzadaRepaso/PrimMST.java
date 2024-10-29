@@ -21,7 +21,7 @@ public class PrimMST {
 		
 		key[nodoInicial]=0;
 		ColaPrioridad<Vertice> pq = new ColaPrioridad<Vertice>(this.numeroNodos);
-		pq.push(new Vertice(0, 0, 0));
+		pq.push(new Vertice(nodoInicial, nodoInicial, 0));
 		
 		while(!pq.estaVacia()) {
 			Vertice nodo = pq.poll();
